@@ -1,11 +1,9 @@
-import { createServer } from "http";
-createServer((request, response) => {
-if (request.url === '/foo') {
-response.write('<html><body><b>foo</b></body></html>');
-} else if (request.url === '/bar') {
-response.write('<html><body><u>bar</u></body></html>');
-} else {
-response.statusCode = 404;
-}
-response.end();
-}).listen(3000);
+import express from 'express';
+const app = express();
+app.get('/', (req, res) => {
+res.send('<html><body><h1>GET</h1></body></html>');
+});
+app.post('/', (req, res) => {
+res.send('<html><body><h1>POST</h1></body></html>');
+});
+app.listen(3000);
